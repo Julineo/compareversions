@@ -17,14 +17,14 @@ func main () {
 	}
 	flag.Parse()
 
-	// Check if have correct number of arguments
+	// Check if have the correct number of arguments
 	args := flag.Args()
 	if len(args) < 2 {
 		fmt.Println("Not enough arguments")
 		os.Exit(1)
 	}
 
-	// Read command line parameters
+	// Read command-line parameters
 	ver1 := args[0]
 	ver2 := args[1]
 
@@ -55,7 +55,7 @@ func compareVersions(version1, version2 string) (int, error) {
 			return 1, nil
 		}
 
-		// Read the first element of the slice, return error if can not convert to int
+		// Read the first element of the slice, return an error if can not convert to int
 		number1, err := strconv.Atoi(versionQue1[0])
 		if err != nil {
 			return 0, err
@@ -65,7 +65,7 @@ func compareVersions(version1, version2 string) (int, error) {
 			return 0, err
 		}
 
-		// compare current level of revision, return result if not equal
+		// Compare the current level of revision, return a result if not equal
 		if number1 > number2 {
 			return 1, nil
 		}
@@ -73,11 +73,11 @@ func compareVersions(version1, version2 string) (int, error) {
 			return -1, nil
 		}
 
-		// continue checking the next level of revision
+		// Continue checking the next level of revision
 		versionQue1 = versionQue1[1:]
 		versionQue2 = versionQue2[1:]
 	}
 
-	// return 0 result if no difference in versions
+	// Return 0 if no difference in versions
 	return 0, nil
 }
